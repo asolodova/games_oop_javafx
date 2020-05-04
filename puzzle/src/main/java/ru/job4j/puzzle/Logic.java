@@ -6,7 +6,7 @@ import ru.job4j.puzzle.firuges.Figure;
 import java.util.Arrays;
 
 /**
- * //TODO add comments.
+ * Class Logic describe actions on the table
  *
  * @author Petr Arsentev (parsentev@yandex.ru)
  * @version $Id$
@@ -71,6 +71,19 @@ public class Logic {
     public boolean isWin() {
         int[][] table = this.convert();
         boolean result = false;
+        for (int i = 0, j = 0; i < table.length; i++) {
+            if (table[i][i] == 1) {
+                while (j < table.length) {
+                    if (table[i][j] == 1 || table[j][i] == 1) {
+                        result = true;
+                        j++;
+                    } else {
+                        result = false;
+                        break;
+                    }
+                }
+            }
+        }
         return result;
     }
 
